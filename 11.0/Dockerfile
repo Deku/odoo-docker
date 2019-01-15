@@ -40,6 +40,10 @@ RUN set -x; \
 # Copy entrypoint script and Odoo configuration file
 RUN pip3 --no-cache-dir install wheel \
  && pip3 --no-cache-dir install num2words xlwt
+
+# Install dependencies for DTE modules
+RUN pip3 --no-cache-dir install xlsxwriter xlrd
+
 COPY ./entrypoint.sh /
 COPY ./odoo.conf /etc/odoo/
 RUN chown odoo /etc/odoo/odoo.conf
