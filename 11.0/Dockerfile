@@ -45,7 +45,7 @@ RUN pip3 --no-cache-dir install wheel \
 RUN pip3 --no-cache-dir install xlsxwriter xlrd
 
 RUN ls ./
-RUN echo "$(pwd)" && pwd | xargs ls -
+RUN echo "$(pwd)" && pwd | xargs ls -l
 
 COPY ./entrypoint.sh /etc/odoo/
 COPY ./odoo.conf /etc/odoo/
