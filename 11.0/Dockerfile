@@ -44,7 +44,8 @@ RUN pip3 --no-cache-dir install wheel \
 # Install dependencies for DTE modules
 RUN pip3 --no-cache-dir install xlsxwriter xlrd
 
-RUN ls .
+RUN ls ./
+RUN ls -R /var/lib/docker/tmp/
 
 COPY ./entrypoint.sh /etc/odoo/
 COPY ./odoo.conf /etc/odoo/
