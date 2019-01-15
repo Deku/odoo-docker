@@ -44,9 +44,10 @@ RUN pip3 --no-cache-dir install wheel \
 # Install dependencies for DTE modules
 RUN pip3 --no-cache-dir install xlsxwriter xlrd
 
-COPY ./entrypoint.sh /
+COPY ./entrypoint.sh /etc/odoo/
 COPY ./odoo.conf /etc/odoo/
 RUN chown odoo /etc/odoo/odoo.conf
+RUN chmod +x /etc/odoo/entrypoint.sh
 
 # Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons for users addons
 RUN mkdir -p /mnt/extra-addons \
@@ -62,5 +63,5 @@ ENV ODOO_RC /etc/odoo/odoo.conf
 # Set default user when running the container
 USER odoo
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/etc/odoo/entrypoint.sh"]
 CMD ["odoo"]
