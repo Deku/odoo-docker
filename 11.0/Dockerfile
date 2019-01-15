@@ -45,7 +45,7 @@ RUN pip3 --no-cache-dir install wheel \
 RUN pip3 --no-cache-dir install xlsxwriter xlrd
 
 RUN ls ./
-RUN ls -R /var/lib/docker/tmp/
+RUN echo "$(pwd)" && pwd | xargs ls -
 
 COPY ./entrypoint.sh /etc/odoo/
 COPY ./odoo.conf /etc/odoo/
