@@ -45,9 +45,6 @@ RUN pip3 --no-cache-dir install wheel \
 # Install dependencies for DTE modules
 RUN pip3 --no-cache-dir install xlsxwriter xlrd
 
-RUN ls ./
-RUN echo "Current directory: $(pwd)" && pwd | xargs ls -l
-
 RUN wget -P /etc/odoo/ https://raw.githubusercontent.com/Deku/odoo-docker/master/11.0/entrypoint.sh
 RUN wget -P /etc/odoo/ https://raw.githubusercontent.com/Deku/odoo-docker/master/11.0/odoo.conf
 RUN chown odoo /etc/odoo/odoo.conf
