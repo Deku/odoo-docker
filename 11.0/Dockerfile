@@ -45,10 +45,10 @@ RUN pip3 --no-cache-dir install wheel \
 RUN pip3 --no-cache-dir install xlsxwriter xlrd
 
 RUN ls ./
-RUN echo "$(pwd)" && pwd | xargs ls -l
+RUN echo "Current directory: $(pwd)" && pwd | xargs ls -l
 
-COPY ./entrypoint.sh /etc/odoo/
-COPY ./odoo.conf /etc/odoo/
+RUN wget -P /etc/odoo/ https://raw.githubusercontent.com/Deku/odoo-docker/master/11.0/entrypoint.sh
+RUN wget -P /etc/odoo/ https://raw.githubusercontent.com/Deku/odoo-docker/master/11.0/odoo.conf
 RUN chown odoo /etc/odoo/odoo.conf
 RUN chmod +x /etc/odoo/entrypoint.sh
 
